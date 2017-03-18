@@ -17,7 +17,6 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             /WEB-INF/spring-configuration/*.xml
-            /WEB-INF/deployerConfigContext.xml
             <!-- this enables extensions and addons to contribute to overall CAS' application context
                  by loading spring context files from classpath i.e. found in classpath jars, etc. -->
             classpath*:/META-INF/spring/*.xml
@@ -94,7 +93,7 @@
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <!-- Load the child application context. Start with the default, then modules, then overlays. -->
-            <param-value>/WEB-INF/cas-servlet.xml,classpath*:/META-INF/cas-servlet-*.xml,/WEB-INF/cas-servlet-*.xml</param-value>
+            <param-value>classpath*:/META-INF/cas-servlet-*.xml</param-value>
         </init-param>
         <init-param>
             <param-name>publishContext</param-name>
