@@ -26,12 +26,21 @@
         <ref bean="rememberMeAuthenticationMetaDataPopulator" />
     </util:list>
 
-    <bean id="attributeRepository" class="org.jasig.services.persondir.support.NamedStubPersonAttributeDao"
-          p:backingMap-ref="attrRepoBackingMap" />
+    
+    <!--配置登陆验证方式-->
+    
+    <!--配置使用JDBC验证-->
+    <alias name="searchModeSearchDatabaseAuthenticationHandler" alias="primaryAuthenticationHandler" />
+    <alias name="dataSource" alias="searchModeDatabaseDataSource" />
+    
+    <!--配置Base64格式化方式-->
+    <alias name="base64TextPasswordEncoder" alias="passwordEncoder" />
 
-    <alias name="acceptUsersAuthenticationHandler" alias="primaryAuthenticationHandler" />
+
     <alias name="personDirectoryPrincipalResolver" alias="primaryPrincipalResolver" />
 
+    <bean id="attributeRepository" class="org.jasig.services.persondir.support.NamedStubPersonAttributeDao"
+          p:backingMap-ref="attrRepoBackingMap" />
     <util:map id="attrRepoBackingMap">
         <entry key="uid" value="uid" />
         <entry key="eduPersonAffiliation" value="eduPersonAffiliation" />

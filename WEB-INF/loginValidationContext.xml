@@ -13,66 +13,23 @@
     <description>
         The configuration of login validation, now only datasource validation is valid.
     </description>
-					
-		<!-- <bean id="dataSource"
-					class="com.mchange.v2.c3p0.ComboPooledDataSource"
-					p:driverClass="${database.driverClass}"
-					p:jdbcUrl="${database.url}"
-					p:user="${database.user}"
-					p:password="${database.password}"
-					p:initialPoolSize="${database.pool.minSize}"
-					p:minPoolSize="${database.pool.minSize}"
-					p:maxPoolSize="${database.pool.maxSize}"
-					p:maxIdleTimeExcessConnections="${database.pool.maxIdleTime}"
-					p:checkoutTimeout="${database.pool.maxWait}"
-					p:acquireIncrement="${database.pool.acquireIncrement}"
-					p:acquireRetryAttempts="${database.pool.acquireRetryAttempts}"
-					p:acquireRetryDelay="${database.pool.acquireRetryDelay}"
-					p:idleConnectionTestPeriod="${database.pool.idleConnectionTestPeriod}"
-					p:preferredTestQuery="${database.pool.connectionHealthQuery}"/> -->
-
-		<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"> 
-				 <property name="url" value="${database.url}" />
-				 <property name="username" value="${database.user}" />
-				 <property name="password" value="${database.password}" />
-				 <property name="maxActive" value="${database.pool.maxSize}" />
-		</bean>
-
-				<!--							
-				<property name="filters" value="stat" />
-				<property name="initialSize" value="1" />
-				<property name="maxWait" value="60000" />
-				<property name="minIdle" value="1" />
-
-			 <property name="timeBetweenEvictionRunsMillis" value="60000" />
-			 <property name="minEvictableIdleTimeMillis" value="300000" />
-
-			 <property name="testWhileIdle" value="true" />
-			 <property name="testOnBorrow" value="false" />
-			 <property name="testOnReturn" value="false" />
-
-			 <property name="poolPreparedStatements" value="true" />
-			 <property name="maxOpenPreparedStatements" value="20" />
-			 -->
-
-        <!--  配置传给客户端的字段，自定义字段传递-->
-        <bean id="dataSourceAttribute"
-                class="org.jasig.services.persondir.support.jdbc.SingleRowJdbcPersonAttributeDao">
-                <constructor-arg index="0" ref="dataSource" />
-                <constructor-arg index="1" value="select * from users where {0}" />
-                <property name="queryAttributeMapping">
-                        <map>
-                                <entry key="username" value="username" />
-                        </map>
-                </property>
-                <property name="resultAttributeMapping">
-                        <map>
-                                <entry key="username" value="un" />
-                <entry key="password" value="pwd" />
-                                <entry key="age" value="age" />
-                                <entry key="sex" value="sex" />
-                        </map>
-                </property>
-        </bean>
+		
+		<!--配置dataSource数据源，默认c3p0-->					
+		<bean id="dataSource"
+			class="com.mchange.v2.c3p0.ComboPooledDataSource"
+			p:driverClass="${database.driverClass}"
+			p:jdbcUrl="${database.url}"
+			p:user="${database.user}"
+			p:password="${database.password}"
+			p:initialPoolSize="${database.pool.minSize}"
+			p:minPoolSize="${database.pool.minSize}"
+			p:maxPoolSize="${database.pool.maxSize}"
+			p:maxIdleTimeExcessConnections="${database.pool.maxIdleTime}"
+			p:checkoutTimeout="${database.pool.maxWait}"
+			p:acquireIncrement="${database.pool.acquireIncrement}"
+			p:acquireRetryAttempts="${database.pool.acquireRetryAttempts}"
+			p:acquireRetryDelay="${database.pool.acquireRetryDelay}"
+			p:idleConnectionTestPeriod="${database.pool.idleConnectionTestPeriod}"
+			p:preferredTestQuery="${database.pool.connectionHealthQuery}"/>
 
 </beans>
