@@ -47,13 +47,13 @@
             <map>
                 <!--key数据库字段名，value返回给客户端该值的变量名-->
                 <entry key="username" value="account" />
-                
+                <!--
                 <entry key="real_name" value="name" />
                 <entry key="age" value="age" />
                 <entry key="sex" value="sex" />
                 <entry key="company" value="co" />
                 <entry key="telephone" value="phone" />
-                
+                -->
             </map>
         </property>
     </bean>
