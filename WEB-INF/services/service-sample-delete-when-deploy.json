@@ -1,9 +1,9 @@
 {
   "@class" : "org.jasig.cas.services.RegexRegisteredService",
-  "serviceId" : "^http://localhost:8081/mywebapp/.*",
-  "name" : "localhost-1",
-  "id" : 10000001,
-  "description" : "This service definition is for localhost-1.",
+  "serviceId" : "^http[s]?://.*",
+  "name" : "http(s) service",
+  "id" : 10000000,
+  "description" : "service sample for all services deployed on http/https",
   "proxyPolicy" : {
     "@class" : "org.jasig.cas.services.RefuseRegisteredServiceProxyPolicy"
   },
