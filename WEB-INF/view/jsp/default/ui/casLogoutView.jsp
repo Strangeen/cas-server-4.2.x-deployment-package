@@ -1,7 +1,17 @@
-<jsp:directive.include file="includes/top.jsp" />
-  <div id="msg" class="success">
-    <h2><spring:message code="screen.logout.header" /></h2>
-    <p><spring:message code="screen.logout.success" /></p>
-    <p><spring:message code="screen.logout.security" /></p>
-  </div>
-<jsp:directive.include file="includes/bottom.jsp" />
+<%-- 退出成功页面 --%>
+
+<%-- 暂时不会Spring webflow，所以按上述代码实现退出后重定向到登陆页面 --%>
+
+
+<%@ page pageEncoding="UTF-8" %>
+
+<%
+String lgoRedirUrl = request.getParameter("service");
+if (lgoRedirUrl != null && !"".equals(lgoRedirUrl)) {
+	response.sendRedirect(lgoRedirUrl);
+} else {
+	response.sendRedirect("/cas");
+}
+%>
+
+

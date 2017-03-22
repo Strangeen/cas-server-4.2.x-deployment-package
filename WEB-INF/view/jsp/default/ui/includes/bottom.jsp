@@ -1,22 +1,15 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page pageEncoding="UTF-8" %>
 
 </div> <!-- END #content -->
 
 <footer>
   <div id="copyright" class="container">
-    <p><spring:message code="copyright" /></p>
-        <p>Powered by <a href="http://www.apereo.org/cas">
-            Apereo Central Authentication Service <%=org.jasig.cas.CasVersion.getVersion()%></a>
-            <%=org.jasig.cas.CasVersion.getDateTime()%></p>
+  	<p>Copyright &copy; 2017 <a href='https://<spring:message code="support" />'><spring:message code="support" /></a> & 
+  		<a href='https://<spring:message code="support2" />'><spring:message code="support2" /></a></p>
   </div>
 </footer>
 
 </div> <!-- END #container -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js"></script>
-<spring:theme code="cas.javascript.file" var="casJavascriptFile" text="" />
-<script type="text/javascript" src="<c:url value="${casJavascriptFile}" />"></script>
-
 </body>
 </html>
 

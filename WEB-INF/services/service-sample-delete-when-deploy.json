@@ -1,20 +1,20 @@
 {
   "@class" : "org.jasig.cas.services.RegexRegisteredService",
-  "serviceId" : "^https://www.apereo.org",
-  "name" : "Apereo",
-  "theme" : "apereo",
-  "id" : 10000002,
-  "description" : "Apereo foundation sample service",
+  "serviceId" : "^http[s]?://.*",
+  "name" : "http(s) service",
+  "id" : 10000000,
+  "description" : "service sample for all services deployed on http/https",
   "proxyPolicy" : {
     "@class" : "org.jasig.cas.services.RefuseRegisteredServiceProxyPolicy"
   },
-  "evaluationOrder" : 1,
+  "evaluationOrder" : 10000,
   "usernameAttributeProvider" : {
     "@class" : "org.jasig.cas.services.DefaultRegisteredServiceUsernameProvider"
   },
   "logoutType" : "BACK_CHANNEL",
   "attributeReleasePolicy" : {
     "@class" : "org.jasig.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "allowedAttributes" : [ "java.util.ArrayList", [ "account", "name", "sex", "co", "age", "phone" ] ],
     "principalAttributesRepository" : {
       "@class" : "org.jasig.cas.authentication.principal.DefaultPrincipalAttributesRepository"
     },

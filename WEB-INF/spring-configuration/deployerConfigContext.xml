@@ -26,34 +26,32 @@
         <ref bean="rememberMeAuthenticationMetaDataPopulator" />
     </util:list>
 
-    <bean id="attributeRepository" class="org.jasig.services.persondir.support.NamedStubPersonAttributeDao"
-          p:backingMap-ref="attrRepoBackingMap" />
+    
+    <!--配置登陆验证方式-->
+    <!--配置使用JDBC验证-->
+    <alias name="searchModeSearchDatabaseAuthenticationHandler" alias="primaryAuthenticationHandler" />
+    <alias name="dataSource" alias="searchModeDatabaseDataSource" />
+    <!--配置Base64格式化方式-->
+    <alias name="base64TextPasswordEncoder" alias="passwordEncoder" />
 
-    <alias name="acceptUsersAuthenticationHandler" alias="primaryAuthenticationHandler" />
+
+    <!--配置Attribute传递-->
     <alias name="personDirectoryPrincipalResolver" alias="primaryPrincipalResolver" />
+    <!--配置传递的参数-->
+    <alias name="dataSourceAttribute" alias="attributeRepository" />
+    <!--配置应用客户端信息-->
+    <alias name="jsonServiceRegistryDao" alias="serviceRegistryDao" />
 
-    <util:map id="attrRepoBackingMap">
-        <entry key="uid" value="uid" />
-        <entry key="eduPersonAffiliation" value="eduPersonAffiliation" />
-        <entry key="groupMembership" value="groupMembership" />
-        <entry>
-            <key><value>memberOf</value></key>
-            <list>
-                <value>faculty</value>
-                <value>staff</value>
-                <value>org</value>
-            </list>
-        </entry>
-    </util:map>
+
+    <!--TGT超时设置-->
+    <alias name="ticketGrantingTicketExpirationPolicy" alias="grantingTicketExpirationPolicy" />
+    <!--ST超时设置-->
+    <alias name="multiTimeUseOrTimeoutExpirationPolicy" alias="serviceTicketExpirationPolicy" />
+
 
     <alias name="serviceThemeResolver" alias="themeResolver" />
 
-    <alias name="jsonServiceRegistryDao" alias="serviceRegistryDao" />
-
     <alias name="defaultTicketRegistry" alias="ticketRegistry" />
-    
-    <alias name="ticketGrantingTicketExpirationPolicy" alias="grantingTicketExpirationPolicy" />
-    <alias name="multiTimeUseOrTimeoutExpirationPolicy" alias="serviceTicketExpirationPolicy" />
 
     <alias name="anyAuthenticationPolicy" alias="authenticationPolicy" />
     <alias name="acceptAnyAuthenticationPolicyFactory" alias="authenticationPolicyFactory" />
