@@ -1,17 +1,12 @@
 <%-- 退出成功页面 --%>
 
-<%-- 暂时不会Spring webflow，所以按上述代码实现退出后重定向到登陆页面 --%>
-
+<%-- 
+	cas.logout.followServiceRedirects设置为true登出后会重定向，不会再执行该JSP
+	如果设置为false，会执行该JSP页面，则需要设置该JSP页面，
+ --%>
 
 <%@ page pageEncoding="UTF-8" %>
 
-<%
-String lgoRedirUrl = request.getParameter("service");
-if (lgoRedirUrl != null && !"".equals(lgoRedirUrl)) {
-	response.sendRedirect(lgoRedirUrl);
-} else {
-	response.sendRedirect("/cas");
-}
-%>
 
+ 登出成功
 

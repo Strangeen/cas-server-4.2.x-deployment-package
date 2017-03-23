@@ -458,7 +458,24 @@ database.password=root
     `/WEB-INF/classes/log4j2.xml`
     
 
+### 10. 登出
 
+- #### 描述：
+    
+    默认配置为当cas server系统退出时，有指定跳转页面则跳转到指定页面，否则执行`casLogoutView.jsp`，指定页面即`/logout`的`service`参数，如登出url为：`http://server/logout?service=client`，登出后，浏览器跳转到`client`
+
+- #### 配置：
+    
+    `/WEB-INF/cas.properties`：
+    ```
+    cas.logout.followServiceRedirects=true
+    ```
+    - `cas.logout.followServiceRedirects`配置为`true`，`/logout`带有`service`参数则跳转到参数地址，否则执行`casLogoutView.jsp`（默认）
+    
+    - `cas.logout.followServiceRedirects`配置为`false`，执行`casLogoutView.jsp`
+    
+* 注：`service`参数需要使用unicode编码
+    
 ---
 
 # 附A 注释解释
@@ -551,3 +568,4 @@ tomcat_folder/bin/下：
 ```
 <import resource="propertyFileConfigurer.xml"/>
 ```
+
